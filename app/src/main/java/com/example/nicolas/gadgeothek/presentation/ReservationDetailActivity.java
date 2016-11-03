@@ -15,6 +15,7 @@ import com.example.nicolas.gadgeothek.domain.Gadget;
 import com.example.nicolas.gadgeothek.domain.Reservation;
 import com.example.nicolas.gadgeothek.service.Callback;
 import com.example.nicolas.gadgeothek.service.LibraryService;
+import com.example.nicolas.gadgeothek.service.Server;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class ReservationDetailActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                LibraryService.setServerAddress("http://10.0.2.2:8080/public");
+                LibraryService.setServerAddress(new Server("public").server);
                 LibraryService.deleteReservation(reservation, new Callback<Boolean>() {
                     @Override
                     public void onCompletion(Boolean input) {

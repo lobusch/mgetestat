@@ -11,86 +11,55 @@
     android:orientation="vertical"
     tools:context="com.example.nicolas.gadgeothek.presentation.GadgetActivity">
 
-    <TableLayout
+    <TextView
+        android:text="Hersteller"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textSize="20sp"/>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="8dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtValueProducer"
+        android:text="Unbekannt"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp" />
 
-            <TextView
-                android:text="Hersteller"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView3"
-                android:paddingRight="8dp" />
+    <TextView
+        android:text="Kaufpreis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView10"
+        android:textSize="20sp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtValueProducer"
-                android:text="Unbekannt" />
-        </TableRow>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtValuePrice"
+        android:text="Unbekannt"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="8dp">
+    <TextView
+        android:text="Kondition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView11"
+        android:textSize="20sp"/>
 
-            <TextView
-                android:text="Kaufpreis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView10" />
+    <TextView
+        android:text="Unbekannt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtValueCondition"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtValuePrice"
-                android:text="Unbekannt" />
-        </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="8dp">
-
-            <TextView
-                android:text="Kondition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView11" />
-
-            <TextView
-                android:text="Unbekannt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtValueCondition" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="8dp">
-
-            <TextView
-                android:text="Status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView12" />
-
-            <TextView
-                android:text="Unbekannt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtValueStatus" />
-        </TableRow>
-    </TableLayout>
 
     <Button
-        android:text="Ausleihen"
+        android:text="Reservieren"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnLoan" />

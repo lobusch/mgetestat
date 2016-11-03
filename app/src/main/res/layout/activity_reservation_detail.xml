@@ -11,6 +11,7 @@
     android:orientation="vertical"
     tools:context="com.example.nicolas.gadgeothek.presentation.GadgetActivity">
 
+    <!--
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView3"
-                android:paddingRight="8dp" />
+                android:paddingRight="16dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -46,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView10"
-                android:paddingRight="8dp" />
+                android:paddingRight="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -74,12 +75,59 @@
         </TableRow>
 
     </TableLayout>
+    -->
+
+    <TextView
+        android:text="Produkt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:paddingRight="16dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtValueProduct"
+        android:text="Unbekannt"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp" />
+
+    <TextView
+        android:text="Reservationsdatum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView10"
+        android:paddingRight="16dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtValueReservationDate"
+        android:text="Unbekannt"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp" />
+
+
+    <TextView
+        android:text="Status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView13"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtValueState"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp" />
 
     <Button
         android:text="Reservation Stornieren"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnLoan"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
+        android:id="@+id/btnLoan" />
 </LinearLayout>

@@ -68,6 +68,7 @@ public class LibraryService {
     }
 
     public static void register(String mail, String password, String name, String studentenNumber, final Callback<Boolean> callback) {
+
         HashMap<String, String> parameter = new HashMap<>();
         parameter.put("email", mail);
         parameter.put("password", password);

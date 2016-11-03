@@ -13,6 +13,7 @@ import com.example.nicolas.gadgeothek.R;
 import com.example.nicolas.gadgeothek.domain.Gadget;
 import com.example.nicolas.gadgeothek.service.Callback;
 import com.example.nicolas.gadgeothek.service.LibraryService;
+import com.example.nicolas.gadgeothek.service.Server;
 
 import static android.R.id.content;
 
@@ -22,7 +23,6 @@ public class GadgetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gadget);
-        System.out.println("in_here");
 
         final Gadget gadget = (Gadget)this.getIntent().getSerializableExtra("gadget");
         Button btnLoan = (Button)findViewById(R.id.btnLoan);
@@ -31,8 +31,7 @@ public class GadgetActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                System.out.println("geht?"+gadget.getInventoryNumber());
-                LibraryService.setServerAddress("http://10.0.2.2:8080/public");
+                LibraryService.setServerAddress(new Server("public").server);
                 LibraryService.reserveGadget(gadget, new Callback<Boolean>() {
 
                     @Override
@@ -66,17 +65,15 @@ public class GadgetActivity extends AppCompatActivity {
             TextView txtManufacturer = (TextView) findViewById(R.id.txtValueProducer);
             TextView txtCondition = (TextView) findViewById(R.id.txtValueCondition);
 
-
-
             txtManufacturer.setText(gadget.getManufacturer());
-            Double price = gadget.getPrice();
-            txtPrice.setText(price.toString());
+            Integer price = (int)gadget.getPrice();
+            txtPrice.setText(price.toString()+" CHF");
             txtCondition.setText(gadget.getCondition().toString());
 
 
 
         } else {
-            System.out.println("Gadget error");
+            errorMessage("Da ist leider ein Problem aufgetretten");
         }
 
 

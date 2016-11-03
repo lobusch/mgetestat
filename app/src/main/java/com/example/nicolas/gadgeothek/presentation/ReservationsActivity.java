@@ -16,6 +16,7 @@ import com.example.nicolas.gadgeothek.domain.Loan;
 import com.example.nicolas.gadgeothek.domain.Reservation;
 import com.example.nicolas.gadgeothek.service.Callback;
 import com.example.nicolas.gadgeothek.service.LibraryService;
+import com.example.nicolas.gadgeothek.service.Server;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class ReservationsActivity extends AppCompatActivity {
             }
         }
 
-        LibraryService.setServerAddress("http://10.0.2.2:8080/public");
+        LibraryService.setServerAddress(new Server("public").server);
         LibraryService.getReservationsForCustomer(new Callback<List<Reservation>>() {
             @Override
             public void onCompletion(List<Reservation> input) {

@@ -17,6 +17,7 @@ import com.example.nicolas.gadgeothek.R;
 import com.example.nicolas.gadgeothek.domain.Gadget;
 import com.example.nicolas.gadgeothek.service.Callback;
 import com.example.nicolas.gadgeothek.service.LibraryService;
+import com.example.nicolas.gadgeothek.service.Server;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class GadgetOverviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
 
-        LibraryService.setServerAddress("http://10.0.2.2:8080");
+        LibraryService.setServerAddress(new Server().server);
 
 
         LibraryService.getGadgets(new Callback<List<Gadget>>() {

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.nicolas.gadgeothek.R;
 import com.example.nicolas.gadgeothek.service.Callback;
 import com.example.nicolas.gadgeothek.service.LibraryService;
+import com.example.nicolas.gadgeothek.service.Server;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -61,6 +62,7 @@ public class MenuActivity extends AppCompatActivity {
                         startActivity(accountIntent);
                         break;
                     case 3:
+                        LibraryService.setServerAddress(new Server("public").server);
                         LibraryService.logout(new Callback<Boolean>() {
                             @Override
                             public void onCompletion(Boolean success) {
