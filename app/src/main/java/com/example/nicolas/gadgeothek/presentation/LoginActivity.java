@@ -4,9 +4,7 @@ import android.content.Intent;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,10 +23,11 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         setTitle("Login");
 
         if(getIntent().getStringExtra("hint")!=null) {
-            showMessage(getIntent().getStringExtra("hint"));
+            showMessage(getIntent().getStringExtra("hint"),Toast.LENGTH_LONG);
         }
 
         Button btnLogin = (Button)findViewById(R.id.btnLogin);
@@ -42,39 +41,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        final EditText inputEmailAddress = (EditText) findViewById(R.id.inputEmailAddress);
-
-        inputEmailAddress.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count){
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after){
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-                String email = s.toString();
-                if (s.length() > 5) {
-                    if(!isValidEmail(email))
-                     inputEmailAddress.setError("Bitte gib eine gültige Email-Adresse ein.");
-                }
-            }
-        });
-
-
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+                EditText inputEmailAddress = (EditText) findViewById(R.id.inputEmailAddress);
                 EditText inputPassword = (EditText) findViewById(R.id.inputPassword);
 
                 String txtEmailAddress = inputEmailAddress.getText().toString();
                 String txtPassword = inputPassword.getText().toString();
 
-                //LibraryService.setServerAddress("http://mge10.dev.ifs.hsr.ch/public");
                 LibraryService.setServerAddress(new Server("public").server);
-
-
 
                 LibraryService.login(txtEmailAddress, txtPassword, new Callback<Boolean>() {
 
@@ -84,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             startActivity(i);
                         } else {
-                            Toast.makeText(LoginActivity.this, "Falsche Eingaben", Toast.LENGTH_SHORT).show();
+                            showMessage("Falsche Eingaben.",Toast.LENGTH_SHORT);
                         }
                     }
 
@@ -92,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(String message) {
-                        Toast.makeText(LoginActivity.this, "Anmeldedaten unbekannt.", Toast.LENGTH_LONG).show();
+                        showMessage("Anmeldedaten unbekannt.",Toast.LENGTH_SHORT);
                     }
 
                     Intent i = new Intent(getApplicationContext(), MenuActivity.class);
@@ -108,8 +85,8 @@ public class LoginActivity extends AppCompatActivity {
         return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
 
-    private void showMessage(String message) {
-        Toast toast = Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG);
+    private void showMessage(String message, int toastLength) {
+        Toast toast = Toast.makeText(LoginActivity.this, message, toastLength);
         toast.show();
     }
 }

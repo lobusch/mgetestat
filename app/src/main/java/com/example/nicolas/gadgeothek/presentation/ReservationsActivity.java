@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nicolas.gadgeothek.R;
-import com.example.nicolas.gadgeothek.domain.Gadget;
 import com.example.nicolas.gadgeothek.domain.Loan;
 import com.example.nicolas.gadgeothek.domain.Reservation;
 import com.example.nicolas.gadgeothek.service.Callback;
@@ -33,9 +32,9 @@ public class ReservationsActivity extends AppCompatActivity {
 
         if(lastActivity != null) {
             if (lastActivity.equals("GadgetActivity")) {
-                showMessage("Das Produkt wurde reserviert.");
+                showMessage("Das Produkt wurde reserviert.",Toast.LENGTH_LONG);
             } else if (lastActivity.equals("ReservationDetailActivity")) {
-                showMessage("Die Reservation wurde entfernt.");
+                showMessage("Die Reservation wurde entfernt.",Toast.LENGTH_LONG);
             }
         }
 
@@ -153,8 +152,8 @@ public class ReservationsActivity extends AppCompatActivity {
     }
 
 
-    private void showMessage(String message) {
-        Toast toast = Toast.makeText(ReservationsActivity.this, message, Toast.LENGTH_LONG);
+    private void showMessage(String message, int toastLength) {
+        Toast toast = Toast.makeText(ReservationsActivity.this, message, toastLength);
         toast.show();
     }
 

@@ -1,6 +1,5 @@
 package com.example.nicolas.gadgeothek.presentation;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import com.example.nicolas.gadgeothek.service.Callback;
 import com.example.nicolas.gadgeothek.service.LibraryService;
 import com.example.nicolas.gadgeothek.service.Server;
 
-import static android.R.id.content;
 
 public class GadgetActivity extends AppCompatActivity {
 
@@ -30,7 +28,6 @@ public class GadgetActivity extends AppCompatActivity {
         btnLoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 LibraryService.setServerAddress(new Server("public").server);
                 LibraryService.reserveGadget(gadget, new Callback<Boolean>() {
 
@@ -40,6 +37,7 @@ public class GadgetActivity extends AppCompatActivity {
                             Intent reservationsIntent = new Intent(getApplicationContext(), ReservationsActivity.class);
                             reservationsIntent.putExtra("path","GadgetActivity");
                             startActivity(reservationsIntent);
+
                         } else {
                             errorMessage("Sie haben dieses Gadget entweder schon reserviert oder Ihre maximale Anzahl an Reservationen schon erreicht.");
                         }
@@ -73,7 +71,7 @@ public class GadgetActivity extends AppCompatActivity {
 
 
         } else {
-            errorMessage("Da ist leider ein Problem aufgetretten");
+            errorMessage("Ein Problem aufgetretten, der Vorgang konnte nicht durchfeführt werden.");
         }
 
 

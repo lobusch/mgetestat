@@ -19,8 +19,10 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        Intent gadgetOverviewIntent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(gadgetOverviewIntent);
+        Intent intent = new Intent(MenuActivity.this, MenuActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("EXIT", true);
+        startActivity(intent);
 
     }
 
@@ -30,10 +32,9 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_new);
 
         setTitle("Menü");
-
         ListView menu = (ListView)findViewById(R.id.mainMenu);
 
-        String[] myStringArray = new String[] {
+        String[] menulistArray = new String[] {
                 "Gadgeothek",
                 "Ausgeliehene Gadgets & Reservationen",
                 "Benutzerdaten",
@@ -41,7 +42,7 @@ public class MenuActivity extends AppCompatActivity {
         };
 
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, myStringArray);
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, menulistArray);
 
         menu.setAdapter(arrayAdapter);
 
@@ -71,13 +72,13 @@ public class MenuActivity extends AppCompatActivity {
                                     Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
                                     startActivity(loginIntent);
                                 } else {
-                                    Toast.makeText(MenuActivity.this, "Logout ist fehlgeschlagen.", Toast.LENGTH_SHORT).show();
+                                    showMessage("Logout ist fehlgeschlagen.",Toast.LENGTH_SHORT);
                                 }
                             }
 
                             @Override
                             public void onError(String message) {
-                                Toast.makeText(MenuActivity.this, message, Toast.LENGTH_SHORT).show();
+                                showMessage(message,Toast.LENGTH_SHORT);
                             }
                         });
 
@@ -88,4 +89,10 @@ public class MenuActivity extends AppCompatActivity {
         });
 
     }
+
+    private void showMessage(String message, int toastLength) {
+        Toast toast = Toast.makeText(MenuActivity.this, message, toastLength);
+        toast.show();
+    }
+
 }

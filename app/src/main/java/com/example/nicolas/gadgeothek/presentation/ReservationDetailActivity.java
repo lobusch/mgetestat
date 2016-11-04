@@ -4,23 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nicolas.gadgeothek.R;
-import com.example.nicolas.gadgeothek.domain.Gadget;
 import com.example.nicolas.gadgeothek.domain.Reservation;
 import com.example.nicolas.gadgeothek.service.Callback;
 import com.example.nicolas.gadgeothek.service.LibraryService;
 import com.example.nicolas.gadgeothek.service.Server;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by nicolas on 02.11.16.
@@ -53,11 +47,9 @@ public class ReservationDetailActivity  extends AppCompatActivity {
 
                     @Override
                     public void onError(String message) {
-
+                        showMessage(message,Toast.LENGTH_SHORT);
                     }
                 });
-
-
 
             }
         });
@@ -70,9 +62,6 @@ public class ReservationDetailActivity  extends AppCompatActivity {
             TextView txtProduct = (TextView) findViewById(R.id.txtValueProduct);
             TextView txtReservationDate = (TextView) findViewById(R.id.txtValueReservationDate);
             TextView txtState = (TextView)findViewById(R.id.txtValueState);
-
-
-
 
             txtProduct.setText(reservation.getGadget().getName());
             String reservationDate = new SimpleDateFormat("dd.MM.yyyy").format(reservation.getReservationDate()).toString();
@@ -93,5 +82,10 @@ public class ReservationDetailActivity  extends AppCompatActivity {
 
 
 
+    }
+
+    private void showMessage(String message, int toastLength) {
+        Toast toast = Toast.makeText(ReservationDetailActivity.this, message, toastLength);
+        toast.show();
     }
 }

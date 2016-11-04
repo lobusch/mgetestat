@@ -26,13 +26,19 @@ import java.util.List;
 public class GadgetOverviewActivity extends AppCompatActivity {
 
     @Override
+    public void onBackPressed() {
+
+        Intent gadgetOverviewIntent = new Intent(getApplicationContext(), MenuActivity.class);
+        startActivity(gadgetOverviewIntent);
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-
         LibraryService.setServerAddress(new Server().server);
-
 
         LibraryService.getGadgets(new Callback<List<Gadget>>() {
             @Override
@@ -51,26 +57,17 @@ public class GadgetOverviewActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-
-        Intent gadgetOverviewIntent = new Intent(getApplicationContext(), MenuActivity.class);
-        startActivity(gadgetOverviewIntent);
-
-    }
-
     private void fillList(final List<Gadget> input) {
 
         final ListView listGadgets = (ListView) findViewById(R.id.listview);
 
-        List<String> myStringArray = new ArrayList<>();
+        List<String> gadgetNameList = new ArrayList<>();
 
         for(Gadget g:input) {
-            System.out.println(g.getName());
-            myStringArray.add(g.getName());
+            gadgetNameList.add(g.getName());
         }
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, myStringArray);
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, gadgetNameList);
 
         // DataBind ListView with items from ArrayAdapter
         listGadgets.setAdapter(arrayAdapter);
@@ -78,13 +75,8 @@ public class GadgetOverviewActivity extends AppCompatActivity {
         listGadgets.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent gadgetActivity = new Intent(getApplicationContext(), GadgetActivity.class);
-
-                System.out.println("asdasd");
                 Gadget gadget = input.get(position);
-
                 gadgetActivity.putExtra("gadget", gadget);
-
-                System.out.println("out_there");
                 startActivity(gadgetActivity);
             }
 

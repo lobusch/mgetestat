@@ -10,4 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.nicolas.gadgeothek.presentation.AccountActivity">
 
+    <Spinner
+        android:id="@+id/planets_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+    </Spinner>
+
 </RelativeLayout>
