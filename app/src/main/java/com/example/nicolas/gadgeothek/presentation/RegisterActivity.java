@@ -91,13 +91,13 @@ public class RegisterActivity extends AppCompatActivity {
                                 i.putExtra("hint","Danke für die Anmeldung. Sie können sich nun einloggen.");
                                 startActivity(i);
                             } else {
-                                showMessage("Da ist leider ein Problem aufgetretten");
+                                showMessage("Da ist leider ein Problem aufgetretten",Toast.LENGTH_LONG);
                             }
                         }
 
                         @Override
                         public void onError(String message) {
-                            showMessage(message);
+                            showMessage(message,Toast.LENGTH_LONG);
                         }
 
 
@@ -111,8 +111,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void showMessage(String message) {
-        Toast toast = Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_LONG);
+    private void showMessage(String message, int toastLength) {
+        Toast toast = Toast.makeText(RegisterActivity.this, message, toastLength);
         toast.show();
     }
 

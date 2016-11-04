@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtInfoLoan"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp" />
@@ -44,8 +44,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listviewReservations"
-        android:paddingTop="8dp" />
+        android:id="@+id/listviewReservations" />
 
     <TextView
         android:text="Zurzeit keine Gadgets reserviert."
